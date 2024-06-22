@@ -564,7 +564,7 @@
           <input type="number" id="pastelCarne" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
-          <label for="pastelQueijoPresunto">Queijo e Presunto (R$ 8,00):</label>
+          <label for="pastelQueijoPresunto">Pastel de Presunto e Queijo (R$ 8,00):</label>
           <input type="number" id="pastelQueijoPresunto" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
@@ -572,7 +572,11 @@
           <input type="number" id="pastelPizza" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
-          <label for="pastelFrangoCatupiry">Frango com Catupiry (R$ 8,00):</label>
+          <label for="pastelFrango">Pastel de Frango (R$ 8,00):</label>
+          <input type="number" id="pastelFrango" value="0" min="0">
+        </div>
+        <div class="item" bis_skin_checked="1">
+          <label for="pastelFrangoCatupiry">Pastel de Frango com Catupiry (R$ 8,00):</label>
           <input type="number" id="pastelFrangoCatupiry" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
@@ -580,23 +584,23 @@
           <input type="number" id="pastelQueijo" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
-          <label for="pastelCarneQueijo">Carne e Queijo (R$ 12,00):</label>
+          <label for="pastelCarneQueijo">Pastel de Carne e Queijo (R$ 12,00):</label>
           <input type="number" id="pastelCarneQueijo" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
-          <label for="pastelFrangoQueijo">Frango e Queijo (R$ 12,00):</label>
+          <label for="pastelFrangoQueijo">Pastel de Frango e Queijo (R$ 12,00):</label>
           <input type="number" id="pastelFrangoQueijo" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
-          <label for="pastelCalabresa">Calabresa (R$ 10,00):</label>
+          <label for="pastelCalabresa">Pastel de Calabresa (R$ 10,00):</label>
           <input type="number" id="pastelCalabresa" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
-          <label for="pastelCalabresaQueijo">Calabresa e Queijo (R$ 14,00):</label>
+          <label for="pastelCalabresaQueijo">Pastel de Calabresa e Queijo (R$ 14,00):</label>
           <input type="number" id="pastelCalabresaQueijo" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
-          <label for="pastelQueijoBacon">Queijo e Bacon (R$ 13,00):</label>
+          <label for="pastelQueijoBacon">Pastel de Queijo e Bacon (R$ 13,00):</label>
           <input type="number" id="pastelQueijoBacon" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
@@ -624,11 +628,11 @@
           <input type="number" id="pastelHamburguer" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
-          <label for="pastelChocolateNinho">Chocolate com Ninho (R$ 12,00):</label>
+          <label for="pastelChocolateNinho">Pastel de Chocolate com Ninho (R$ 12,00):</label>
           <input type="number" id="pastelChocolateNinho" value="0" min="0">
         </div>
         <div class="item" bis_skin_checked="1">
-          <label for="pastelDoceLeiteBanana">Doce de Leite com Banana (R$ 12,00):</label>
+          <label for="pastelDoceLeiteBanana">Pastel de Doce de Leite com Banana (R$ 12,00):</label>
           <input type="number" id="pastelDoceLeiteBanana" value="0" min="0">
         </div>
   
@@ -766,6 +770,7 @@
             pastelCarne: 8.00,
             pastelQueijoPresunto: 8.00,
             pastelPizza: 8.00,
+            pastelFrango: 8.00,
             pastelFrangoCatupiry: 8.00,
             pastelQueijo: 10.00,
             pastelCarneQueijo: 12.00,
@@ -836,6 +841,7 @@
               carne: document.getElementById('pastelCarne').value,
               queijoPresunto: document.getElementById('pastelQueijoPresunto').value,
               pizza: document.getElementById('pastelPizza').value,
+              frango: document.getElementById('pastelFrango').value,  
               frangoCatupiry: document.getElementById('pastelFrangoCatupiry').value,
               queijo: document.getElementById('pastelQueijo').value,
               carneQueijo: document.getElementById('pastelCarneQueijo').value,
