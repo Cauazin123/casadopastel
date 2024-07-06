@@ -578,6 +578,7 @@ function resetSelect() {
   document.getElementById('pastelDuplo').value = '0',
   document.getElementById('pastelHamburguer').value = '0',
   document.getElementById('pastelHotDog').value = '0',
+  document.getElementById('pastelPalmito').value = '0',  
   document.getElementById('pastelChocolateNinho').value = '0',
   document.getElementById('pastelDoceLeiteBanana').value = '0',
   document.getElementById('adicionalBombom').value = '0',
@@ -975,6 +976,22 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelHotDog">Hot Dog</label>
   <select id="pastelHotDog">
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+</div>
+    <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
+  <label for="pastelPalmito">Palmito</label>
+  <select id="pastelPalmito">
     <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -1442,6 +1459,7 @@ function calcularTroco() {
             pastelDuplo: 18.00,
             pastelHamburguer: 12.00,
             pastelHotDog: 12.00,  
+            pastelPalmito: 12.00,  
             pastelChocolateNinho: 12.00,
             pastelDoceLeiteBanana: 12.00,
             adicionalBombom: 3.00,
@@ -1518,6 +1536,7 @@ function calcularTroco() {
               pastelDuplo: document.getElementById('pastelDuplo').value,
               hamburguer: document.getElementById('pastelHamburguer').value,
               hotDog: document.getElementById('pastelHotDog').value,
+              palmito: document.getElementById('pastelPalmito').value,  
               chocolateNinho: document.getElementById('pastelChocolateNinho').value,
               doceLeiteBanana: document.getElementById('pastelDoceLeiteBanana').value
             };
