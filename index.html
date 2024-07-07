@@ -1303,9 +1303,24 @@ function resetSelect() {
             <option value="uairango">UaiRango</option>
           </select>
         </div>
+  
+        <h2>Taxa</h2>
+        <div class="item" bis_skin_checked="1">
+          <label for="taxa">Escolha a opção de taxa:</label>
+          <select id="taxa" onchange="mostrarEndereco()">
+            <option value="retirada">Retirada</option>
+            <option value="mesa">Mesa</option>
+            <option value="delivery">Delivery (R$ 4,00)</option>
+          </select>
+        </div>
+
+        <div class="item" id="enderecoContainer" style="display: none;" bis_skin_checked="1">
+          <label for="endereco">Endereço:</label>
+          <input type="text" id="endereco">
+        </div>
 
 
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -1381,22 +1396,8 @@ function calcularTroco() {
 
 </body>
 </html>
-        
-  
-        <h2>Taxa</h2>
-        <div class="item" bis_skin_checked="1">
-          <label for="taxa">Escolha a opção de taxa:</label>
-          <select id="taxa" onchange="mostrarEndereco()">
-            <option value="retirada">Retirada</option>
-            <option value="mesa">Mesa</option>
-            <option value="delivery">Delivery (R$ 4,00)</option>
-          </select>
-        </div>
 
-        <div class="item" id="enderecoContainer" style="display: none;" bis_skin_checked="1">
-          <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco">
-        </div>
+        
   
         <button onclick="adicionarPedido()">Adicionar Pedido</button>
         <div class="total" id="total" bis_skin_checked="1">Total: R$ 0.00</div>
