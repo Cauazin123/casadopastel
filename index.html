@@ -167,10 +167,20 @@
       }
 
       @keyframes pulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-        100% { transform: scale(1); }
-      }
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    #icone-pulsante {
+        animation: pulse 2s infinite; /* 2s é a duração da animação */
+    }
 
       h1 {
           text-align: center;
@@ -537,8 +547,9 @@
         <img src="https://i.imgur.com/dBaLJbE.png" alt="Ícone Casa do Pastel" style="width: 40px; height: auto;">
         <span style="margin-left: 10px;">#CASADOPASTEL #CompartilhandoMomentos</span>
     </div>
-
+    
     <div class="container" bis_skin_checked="1">
+        <h1><img src="https://i.imgur.com/Drzu91P.png" alt="Ícone Casa do Pastel" style="width: 150px;"></h1>
         <h1><img src="https://i.imgur.com/dBaLJbE.png" alt="Ícone Casa do Pastel" style="vertical-align: middle; width: 40px; height: auto;"> CASA DO PASTEL</h1>
     
         <div class="item" bis_skin_checked="1">
@@ -546,65 +557,270 @@
           <input type="text" id="nomeCliente">
         </div>
   
-        <!DOCTYPE html>
-<html lang="en">
+      <!DOCTYPE html>
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resetar Select para 0</title>
+<title>Calculadora de Pedidos</title>
+<style>
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+    margin: 20px;
+}
+
+h1, h2 {
+    color: #000;
+}
+
+.item {
+    display: inline-block;
+    width: 200px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+select, input[type="number"], .input-field {
+    width: calc(100% - 20px); /* Ajuste para o campo ser um pouco menor */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    color: #333;
+}
+
+.input-field {
+    text-align: left; /* Alinhar texto à esquerda */
+}
+
+.input-field::placeholder {
+    text-align: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px; /* Aumento do padding para aumentar o tamanho do botão */
+    background-color: #000; /* Cor preta */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 18px; /* Aumento do tamanho da fonte */
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    margin: 12px;
+    font-weight: bold; /* Texto em negrito */
+    width: 220px; /* Largura padronizada */
+}
+
+.button:hover {
+    background-color: #333; /* Cor mais escura no hover */
+}
+
+.total, .troco {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #333;
+    padding: 10px;
+    background-color: #ddd;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.total {
+    font-weight: bold; /* Texto do total em negrito */
+}
+
+.troco {
+    font-weight: bold; /* Texto do troco em negrito */
+}
+
+.lista-pedidos {
+    text-align: left;
+    margin-top: 20px;
+    color: #333;
+}
+
+#enderecoContainer {
+    display: none;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button-container .button {
+    width: 180px;
+    padding: 10px 20px;
+}
+
+.button-container .button-calcular {
+    background-color: #007bff;
+    color: white;
+}
+
+.button-container .button-calcular:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <script>
-function resetSelect() {
-  document.getElementById('salgadoCoxinha').value = '0',
-  document.getElementById('salgadoRisoleCarne').value = '0',
-  document.getElementById('salgadoRisolePresuntoQueijo').value = '0',
-  document.getElementById('salgadoCoxinhaPernil').value = '0',
-  document.getElementById('salgadoBolinhaQueijo').value = '0',
-  document.getElementById('pastelCarne').value = '0',
-  document.getElementById('pastelQueijoPresunto').value = '0',
-  document.getElementById('pastelPizza').value = '0',
-  document.getElementById('pastelFrango').value = '0',
-  document.getElementById('pastelFrangoCatupiry').value = '0',
-  document.getElementById('pastelQueijo').value = '0',
-  document.getElementById('pastelCarneQueijo').value = '0',
-  document.getElementById('pastelFrangoQueijo').value = '0',
-  document.getElementById('pastelCalabresa').value = '0',
-  document.getElementById('pastelCalabresaQueijo').value = '0',
-  document.getElementById('pastelQueijoBacon').value = '0',
-  document.getElementById('pastelCarneSeca').value = '0',
-  document.getElementById('pastelCarneSecaQueijo').value = '0',
-  document.getElementById('pastelCostela').value = '0',
-  document.getElementById('pastelCostelaAcebolada').value = '0',
-  document.getElementById('pastelCostelaQueijo').value = '0',
-  document.getElementById('pastelDuplo').value = '0',
-  document.getElementById('pastelHamburguer').value = '0',
-  document.getElementById('pastelHotDog').value = '0',
-  document.getElementById('pastelPalmito').value = '0',  
-  document.getElementById('pastelChocolateNinho').value = '0',
-  document.getElementById('pastelDoceLeiteBanana').value = '0',
-  document.getElementById('adicionalBombom').value = '0',
-  document.getElementById('adicionalCocoRalado').value = '0',
-  document.getElementById('adicionalQueijo').value = '0',
-  document.getElementById('adicionalCatupiry').value = '0',
-  document.getElementById('adicionalCalabresa').value = '0',
-  document.getElementById('adicionalBacon').value = '0',
-  document.getElementById('adicionalMilho').value = '0',
-  document.getElementById('adicionalVinagrete').value = '0',
-  document.getElementById('bebidaGuarana').value = '0',
-  document.getElementById('bebidaCocaCola').value = '0',
-  document.getElementById('bebidaLatinha').value = '0',
-  document.getElementById('bebidaCoca').value = '0',
-  document.getElementById('bebidaCerveja').value = '0',
-  document.getElementById('bebidaSuco').value = '0',
-  document.getElementById('bebidaaguagas').value = '0'
+const precos = {
+    salgadoCoxinha: 7.00,
+    salgadoRisoleCarne: 7.00,
+    salgadoRisolePresuntoQueijo: 7.00,
+    salgadoCoxinhaPernil: 7.00,  
+    salgadoBolinhaQueijo: 9.00,  
+    pastelCarne: 8.00,
+    pastelQueijoPresunto: 8.00,
+    pastelPizza: 8.00,
+    pastelFrango: 8.00,
+    pastelFrangoCatupiry: 8.00,
+    pastelQueijo: 10.00,
+    pastelCarneQueijo: 12.00,
+    pastelFrangoQueijo: 12.00,
+    pastelCalabresa: 10.00,  
+    pastelCalabresaQueijo: 14.00,
+    pastelQueijoBacon: 13.00,
+    pastelCarneSeca: 16.00,  
+    pastelCarneSecaQueijo: 20.00,  
+    pastelCostela: 16.00,
+    pastelCostelaAcebolada: 18.00,
+    pastelCostelacomQueijo: 20.00,
+    pastelDuplo: 18.00,
+    pastelHamburguer: 12.00,
+    pastelHotDog: 12.00,  
+    pastelChocolateNinho: 12.00,
+    pastelDoceLeiteBanana: 12.00,
+    adicionalBombom: 3.00,
+    adicionalCocoRalado: 3.00,
+    adicionalQueijo: 4.00,
+    adicionalCatupiry: 3.00,
+    adicionalCalabresa: 3.00,
+    adicionalBacon: 3.00,
+    adicionalMilho: 3.00,
+    adicionalVinagrete: 3.00,
+    bebidaGuarana: 8.00,
+    bebidaCocaCola: 14.00,
+    bebidaCoca: 7.00,
+    bebidaLatinha: 5.00,
+    bebidaCerveja: 5.00,
+    bebidaSuco: 4.00,
+    bebidaaguagas: 5.00,
 };
+
+let pedidosAtivos = [];
+
+function resetSelect() {
+    document.querySelectorAll('select').forEach(select => select.value = '0');
+    document.getElementById('enderecoContainer').style.display = 'none';
+    document.getElementById('endereco').value = '';
+    pedidosAtivos = [];
+    mostrarPedidos();
+    atualizarTotal(0); // Zera o total
+    atualizarTroco(0); // Zera o troco
+    document.getElementById('valor-pago').value = ''; // Limpa o valor pago
+}
+
+function adicionarPedido() {
+    let pedido = {};
+
+    for (let item in precos) {
+        const quantidade = parseFloat(document.getElementById(item).value) || 0;
+        if (quantidade > 0) {
+            pedido[item] = quantidade;
+        }
+    }
+
+    if (Object.keys(pedido).length > 0) {
+        pedidosAtivos.push(pedido);
+        mostrarPedidos();
+        resetSelect();
+    } else {
+        alert('Selecione ao menos um produto para adicionar ao pedido.');
+    }
+}
+
+function mostrarPedidos() {
+    let listaPedidos = document.getElementById('listaPedidos');
+    listaPedidos.innerHTML = '';
+
+    pedidosAtivos.forEach((pedido, index) => {
+        let pedidoHTML = '<p><strong>Pedido ' + (index + 1) + ':</strong><br>';
+        for (let item in pedido) {
+            pedidoHTML += item + ': ' + pedido[item] + ' unidades<br>';
+        }
+        pedidoHTML += '</p>';
+        listaPedidos.innerHTML += pedidoHTML;
+    });
+}
+
+function calcularTotal() {
+    let total = 0;
+
+    pedidosAtivos.forEach(pedido => {
+        for (let item in pedido) {
+            total += pedido[item] * precos[item];
+        }
+    });
+
+    atualizarTotal(total);
+    return total;
+}
+
+function calcularTroco() {
+    let total = calcularTotal();
+    let valorPago = parseFloat(document.getElementById('valor-pago').value) || 0;
+    let troco = valorPago - total;
+
+    if (troco < 0) {
+        alert('O valor pago é insuficiente para cobrir o total dos itens.');
+    } else {
+        atualizarTroco(troco);
+    }
+}
+
+function atualizarTotal(total = 0) {
+    document.getElementById('total').innerHTML = 'Total: R$ ' + total.toFixed(2);
+}
+
+function atualizarTroco(troco = 0) {
+    document.getElementById('troco').innerHTML = 'Troco: <strong>R$ ' + troco.toFixed(2) + '</strong>';
+}
+
+function mostrarEndereco() {
+    const taxaSelecionada = document.getElementById('taxa').value;
+    if (taxaSelecionada === 'delivery') {
+        document.getElementById('enderecoContainer').style.display = 'block';
+    } else {
+        document.getElementById('enderecoContainer').style.display = 'none';
+        document.getElementById('endereco').value = '';
+    }
+}
 </script>
 </head>
 <body>
+    
 <h2> Salgados</h2>
 <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
     <label for="salgadoCoxinha"> Coxinha de Frango</label>
     <select id="salgadoCoxinha">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -620,7 +836,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="salgadoRisoleCarne">Risole de Carne</label>
   <select id="salgadoRisoleCarne">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -636,7 +852,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="salgadoRisolePresuntoQueijo">Risole Presunto e Queijo</label>
   <select id="salgadoRisolePresuntoQueijo">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -650,9 +866,9 @@ function resetSelect() {
   </select>
 </div>
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
-  <label for="salgadoCoxinhaPernil">Coxinha de Costela</label>
+  <label for="salgadoCoxinhaPernil">Coxinha de Pernil</label>
   <select id="salgadoCoxinhaPernil">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -668,7 +884,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="salgadoBolinhaQueijo">Bolinha de Queijo</label>
   <select id="salgadoBolinhaQueijo">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -686,7 +902,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelCarne">Carne</label>
   <select id="pastelCarne">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -702,7 +918,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelQueijoPresunto">Presunto e Queijo</label>
   <select id="pastelQueijoPresunto">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -718,7 +934,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelPizza">Pizza</label>
   <select id="pastelPizza">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -734,7 +950,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelFrango">Frango</label>
   <select id="pastelFrango">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -750,7 +966,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelFrangoCatupiry">Frango com Catupiry</label>
   <select id="pastelFrangoCatupiry">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -764,9 +980,9 @@ function resetSelect() {
   </select>
 </div>
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
-  <label for="pastelQueijo"> Queijo</label>
+  <label for="pastelQueijo">Queijo</label>
   <select id="pastelQueijo">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -782,9 +998,9 @@ function resetSelect() {
 
     <h2>Pastéis Especiais</h2>
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
-  <label for="pastelCarneQueijo"> Carne com Queijo</label>
+  <label for="pastelCarneQueijo">Carne com Queijo</label>
   <select id="pastelCarneQueijo">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -800,7 +1016,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelFrangoQueijo">Frango com Queijo</label>
   <select id="pastelFrangoQueijo">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -816,7 +1032,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelCalabresa">Calabresa</label>
   <select id="pastelCalabresa">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -832,7 +1048,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelCalabresaQueijo">Calabresa com Queijo</label>
   <select id="pastelCalabresaQueijo">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -848,7 +1064,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelQueijoBacon">Queijo com Bacon</label>
   <select id="pastelQueijoBacon">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -864,7 +1080,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelCarneSeca">Carne Seca</label>
   <select id="pastelCarneSeca">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -880,7 +1096,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelCarneSecaQueijo">Carne Seca com Queijo</label>
   <select id="pastelCarneSecaQueijo">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -896,7 +1112,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelCostela">Costela</label>
   <select id="pastelCostela">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -912,7 +1128,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelCostelaAcebolada">Costela Acebolada</label>
   <select id="pastelCostelaAcebolada">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -926,9 +1142,9 @@ function resetSelect() {
   </select>
 </div>
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
-  <label for="pastelCostelaQueijo">Costela com Queijo</label>
-  <select id="pastelCostelaQueijo">
-    <option value="0">0</option>
+  <label for="pastelCostelacomQueijo">Costela com Queijo</label>
+  <select id="pastelCostelacomQueijo">
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -944,7 +1160,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelDuplo">Duplo</label>
   <select id="pastelDuplo">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -960,7 +1176,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelHamburguer">Hamburguer</label>
   <select id="pastelHamburguer">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -976,23 +1192,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelHotDog">Hot Dog</label>
   <select id="pastelHotDog">
-    <option value="0">0</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-  </select>
-</div>
-    <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
-  <label for="pastelPalmito">Palmito</label>
-  <select id="pastelPalmito">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1008,7 +1208,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelChocolateNinho">Chocolate com Ninho</label>
   <select id="pastelChocolateNinho">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1024,7 +1224,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelDoceLeiteBanana">Pastel de Doce de Leite com Banana</label>
   <select id="pastelDoceLeiteBanana">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1042,7 +1242,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="adicionalBombom">Bombom</label>
   <select id="adicionalBombom">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1058,7 +1258,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="adicionalCocoRalado">Coco Ralado</label>
   <select id="adicionalCocoRalado">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1074,7 +1274,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="adicionalQueijo">Queijo</label>
   <select id="adicionalQueijo">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1090,7 +1290,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="adicionalCatupiry">Catupiry</label>
   <select id="adicionalCatupiry">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1106,7 +1306,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="adicionalCalabresa">Calabresa</label>
   <select id="adicionalCalabresa">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1122,7 +1322,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="adicionalBacon">Bacon</label>
   <select id="adicionalBacon">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1138,7 +1338,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="adicionalMilho">Milho</label>
   <select id="adicionalMilho">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1154,7 +1354,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="adicionalVinagrete">Vinagrete/Tomate</label>
   <select id="adicionalVinagrete">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1172,7 +1372,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="bebidaGuarana">Guaraná 2L</label>
   <select id="bebidaGuarana">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1188,7 +1388,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="bebidaCocaCola">Coca Cola 2L</label>
   <select id="bebidaCocaCola">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1204,7 +1404,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="bebidaLatinha">Guaraná Lata (Sabores)</label>
   <select id="bebidaLatinha">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1220,7 +1420,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="bebidaCoca">Coca Cola 600ML</label>
   <select id="bebidaCoca">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1236,7 +1436,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="bebidaCerveja">Cerveja</label>
   <select id="bebidaCerveja">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1252,7 +1452,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="bebidaSuco">Suco (Sabores)</label>
   <select id="bebidaSuco">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1268,7 +1468,7 @@ function resetSelect() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="bebidaaguagas">Água com Gás</label>
   <select id="bebidaaguagas">
-    <option value="0">0</option>
+    <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -1282,128 +1482,59 @@ function resetSelect() {
   </select>
 </div>
     
-<button onclick="resetSelect()">Resetar</button>
-    
-</body>
-</html>
   
         <h2>Observações</h2>
-        <div class="item" bis_skin_checked="1">
-          <label for="observacoes">Observações:</label>
-          <input type="text" id="observacoes">
-        </div>
-  
-        <h2>Forma de Pagamento</h2>
-        <div class="item" bis_skin_checked="1">
-          <label for="pagamento">Escolha a forma de pagamento:</label>
-          <select id="pagamento">
-            <option value="dinheiro">Dinheiro</option>
-            <option value="cartao">Cartão</option>
-            <option value="pix">Pix</option>
-            <option value="uairango">UaiRango</option>
-          </select>
-        </div>
-  
-        <h2>Taxa</h2>
-        <div class="item" bis_skin_checked="1">
-          <label for="taxa">Escolha a opção de taxa:</label>
-          <select id="taxa" onchange="mostrarEndereco()">
-            <option value="retirada">Retirada</option>
-            <option value="mesa">Mesa</option>
-            <option value="delivery">Delivery (R$ 4,00)</option>
-          </select>
-        </div>
-
-        <div class="item" id="enderecoContainer" style="display: none;" bis_skin_checked="1">
-          <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco">
-        </div>
-
-
-        <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Calculadora de Compra</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-<style>
-    body {
-        font-family: 'Poppins', Arial, sans-serif; /* Prioriza a fonte Poppins */
-        text-align: center;
-    }
-    .container {
-        max-width: 700px;
-        width: 80%;
-        margin: 0 auto;
-        padding: 30px;
-        border-radius: 15px;
-        box-shadow: 0 0 0 5px rgba(227, 188, 33, 0.5);
-    }
-    input[type="number"] {
-        width: 100%;
-        padding: 8px;
-        margin: 5px 0;
-        box-sizing: border-box;
-    }
-    button {
-        background-color: #FFD700; /* Amarelo */
-        color: white;
-        padding: 10px 20px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-        margin-top: 10px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        font-family: 'Poppins', Arial, sans-serif; /* Prioriza a fonte Poppins */
-    }
-</style>
-</head>
-<body>
-<div class="container">
-    <h2>Calculadora de Compra</h2>
-    <label for="total">Total da compra:</label>
-    <input type="number" id="total" placeholder="Digite o total da compra"><br>
-    <label for="pago">Valor pago:</label>
-    <input type="number" id="pago" placeholder="Digite o valor pago"><br>
-    <button onclick="calcularTroco()">Calcular Troco</button><br>
-    <p id="troco"></p>
+<div class="item">
+    <label for="observacoes">Observações:</label>
+    <input type="text" id="observacoes">
 </div>
 
-<script>
-function calcularTroco() {
-    var totalCompra = parseFloat(document.getElementById('total').value);
-    var valorPago = parseFloat(document.getElementById('pago').value);
+<h2>Forma de Pagamento</h2>
+<div class="item">
+    <label for="pagamento">Escolha a forma de pagamento:</label>
+    <select id="pagamento">
+        <option value="dinheiro">Dinheiro</option>
+        <option value="cartao">Cartão</option>
+        <option value="pix">Pix</option>
+        <option value="uairango">UaiRango</option>
+    </select>
+</div>
 
-    if (isNaN(totalCompra) || isNaN(valorPago)) {
-        alert('Por favor, digite valores numéricos válidos.');
-        return;
-    }
+<h2>Taxa</h2>
+<div class="item">
+    <label for="taxa">Escolha a opção de taxa:</label>
+    <select id="taxa" onchange="mostrarEndereco()">
+        <option value="retirada">Retirada</option>
+        <option value="mesa">Mesa</option>
+        <option value="delivery">Delivery (R$ 4,00)</option>
+    </select>
+</div>
 
-    var troco = valorPago - totalCompra;
+<div id="enderecoContainer" class="item">
+    <label for="endereco">Endereço:</label>
+    <input type="text" id="endereco">
+</div>
+    
+<label for="valor-pago">Valor Pago:</label>
+<input type="number" id="valor-pago" class="input-field" step="0.01" min="0" placeholder="R$">
 
-    if (troco < 0) {
-        alert('O valor pago é menor que o total da compra.');
-        return;
-    }
+    <div class="button-container">
+    <button class="button" onclick="adicionarPedido()">Adicionar Pedido</button>
+    <button class="button reset-button" onclick="resetSelect()">Limpar Pedido</button>  
+</div>
 
-    document.getElementById('troco').innerText = 'Troco a ser dado: R$ ' + troco.toFixed(2);
-}
-</script>
+<div class="button-container">
+    <button class="button button-calcular" onclick="calcularTotal()">Calcular Total</button>
+    <button class="button button-calcular" onclick="calcularTroco()">Calcular Troco</button>
+</div>
+
+<div class="total" id="total">Total: R$ 0.00</div>    
+<div class="troco" id="troco">Troco: <strong>R$ 0.00</strong></div>
+
+<div id="listaPedidos" class="lista-pedidos"></div>
 
 </body>
 </html>
-
-        
-  
-        <button onclick="adicionarPedido()">Adicionar Pedido</button>
-        <div class="total" id="total" bis_skin_checked="1">Total: R$ 0.00</div>
-        <div id="listaPedidos" bis_skin_checked="1"></div>
-        <button onclick="gerarRelatorio()">Gerar Relatório do Dia</button>
-      </div>
   
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
       <script>
@@ -1439,7 +1570,7 @@ function calcularTroco() {
             salgadoCoxinha: 7.00,
             salgadoRisoleCarne: 7.00,
             salgadoRisolePresuntoQueijo: 7.00,
-            salgadoCoxinhaPernil: 9.00,
+            salgadoCoxinhaPernil: 7.00,  
             salgadoBolinhaQueijo: 9.00,  
             pastelCarne: 8.00,
             pastelQueijoPresunto: 8.00,
@@ -1456,11 +1587,10 @@ function calcularTroco() {
             pastelCarneSecaQueijo: 20.00,  
             pastelCostela: 16.00,
             pastelCostelaAcebolada: 18.00,
-            pastelCostelaQueijo: 20.00,
+            pastelCostelacomQueijo: 20.00,
             pastelDuplo: 18.00,
             pastelHamburguer: 12.00,
             pastelHotDog: 12.00,  
-            pastelPalmito: 12.00,  
             pastelChocolateNinho: 12.00,
             pastelDoceLeiteBanana: 12.00,
             adicionalBombom: 3.00,
@@ -1477,7 +1607,7 @@ function calcularTroco() {
             bebidaLatinha: 5.00,
             bebidaCerveja: 5.00,
             bebidaSuco: 4.00,
-            bebidaaguagas: 3.00  
+            bebidaaguagas: 5.00  
           };
 
           let total = 0;
@@ -1494,6 +1624,27 @@ function calcularTroco() {
 
           document.getElementById('total').innerText = 'Total: R$ ' + total.toFixed(2);
           return total;
+        }
+
+          function calcularTroco() {
+    let totalPedido = calcularTotal(); // Renomeie a variável local para evitar conflito
+
+    let valorPago = parseFloat(document.getElementById('valor-pago').value);
+    let troco = valorPago - totalPedido; // Use a variável corretamente renomeada
+
+    if (troco < 0) {
+        alert('O valor pago é insuficiente para cobrir o total dos itens.');
+    } else {
+        atualizarTroco(troco); // Atualiza o troco na página
+    }
+}
+
+          function resetSelect() {
+          document.querySelectorAll('select').forEach(select => select.value = '0');
+          pedidos = [];
+          mostrarPedidos(); 
+          atualizarTotal(); 
+          atualizarTroco(); 
         }
 
         function formatarItens(tipo, itens) {
@@ -1533,11 +1684,10 @@ function calcularTroco() {
               carneSecaQueijo: document.getElementById('pastelCarneSecaQueijo').value,
               costela: document.getElementById('pastelCostela').value,
               costelaAcebolada: document.getElementById('pastelCostelaAcebolada').value,
-              costelaComQueijo: document.getElementById('pastelCostelaQueijo').value,
+              costelaComQueijo: document.getElementById('pastelCostelacomQueijo').value,
               pastelDuplo: document.getElementById('pastelDuplo').value,
               hamburguer: document.getElementById('pastelHamburguer').value,
               hotDog: document.getElementById('pastelHotDog').value,
-              palmito: document.getElementById('pastelPalmito').value,  
               chocolateNinho: document.getElementById('pastelChocolateNinho').value,
               doceLeiteBanana: document.getElementById('pastelDoceLeiteBanana').value
             };
