@@ -667,7 +667,7 @@ select, input[type="number"], .input-field {
 }
 
 .button-container .button {
-    width: 180px;
+    width: 160px;
     padding: 10px 20px;
 }
 
@@ -1485,24 +1485,27 @@ function mostrarEndereco() {
   </select>
 </div>
 
-<h2>Forma de Pagamento</h2>
-<div class="item">
-    <label for="pagamento">Escolha a forma de pagamento:</label>
-    <select id="pagamento">
-        <option value="dinheiro">Dinheiro</option>
-        <option value="cartao">Cartão</option>
-        <option value="pix">Pix</option>
-        <option value="uairango">UaiRango</option>
-    </select>
+<div class="container">
+    <div class="item">
+        <h2>Forma de Pagamento</h2>
+        <label for="pagamento">Escolha a forma de pagamento:</label>
+        <select id="pagamento">
+            <option value="dinheiro">Dinheiro</option>
+            <option value="cartao">Cartão</option>
+            <option value="pix">Pix</option>
+            <option value="uairango">UaiRango</option>
+        </select>
+    </div>
 
-<h2>Taxa</h2>
-<div class="item">
-    <label for="taxa">Escolha a opção de taxa:</label>
-    <select id="taxa" onchange="mostrarEndereco()">
-        <option value="retirada">Retirada</option>
-        <option value="mesa">Mesa</option>
-        <option value="delivery">Delivery (R$ 4,00)</option>
-    </select>
+    <div class="item">
+        <h2>Taxa</h2>
+        <label for="taxa">Escolha a opção de taxa:</label>
+        <select id="taxa" onchange="mostrarEndereco()">
+            <option value="retirada">Retirada</option>
+            <option value="mesa">Mesa</option>
+            <option value="delivery">Delivery (R$ 4,00)</option>
+        </select>
+    </div>
 </div>
 
 <div id="enderecoContainer" class="item">
