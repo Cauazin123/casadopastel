@@ -554,11 +554,11 @@
     
         <div class="item" bis_skin_checked="1">
           <label for="nomeCliente">Nome do Cliente:</label>
-          <input type="text" id="nomeCliente">   
+          <input type="text" id="nomeCliente">
         </div>
 
-        <div <button class="button reset-button" onclick="resetSelect()">Limpar Pedido</button>
-        </div>
+    <div <button class="button reset-button" onclick="resetSelect()">Limpar Pedido</button>  
+</div>
   
       <!DOCTYPE html>
 <html lang="pt-BR">
@@ -687,8 +687,7 @@ const precos = {
     salgadoCoxinha: 7.00,
     salgadoRisoleCarne: 7.00,
     salgadoRisolePresuntoQueijo: 7.00,
-    salgadoCoxinhaCostela: 9.00,
-    salgadoCoxinhaPernil: 9.00,
+    salgadoCoxinhaPernil: 7.00,  
     salgadoBolinhaQueijo: 9.00,  
     pastelCarne: 8.00,
     pastelQueijoPresunto: 8.00,
@@ -708,8 +707,7 @@ const precos = {
     pastelCostelacomQueijo: 20.00,
     pastelDuplo: 18.00,
     pastelHamburguer: 12.00,
-    pastelHotDog: 12.00,
-    pastelPernil: 12.00,
+    pastelHotDog: 12.00,  
     pastelChocolateNinho: 12.00,
     pastelDoceLeiteBanana: 12.00,
     adicionalBombom: 3.00,
@@ -726,7 +724,7 @@ const precos = {
     bebidaLatinha: 5.00,
     bebidaCerveja: 5.00,
     bebidaSuco: 4.00,
-    bebidaaguagas: 5.00
+    bebidaaguagas: 5.00,
 };
 
 let pedidosAtivos = [];
@@ -857,22 +855,6 @@ function mostrarEndereco() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="salgadoRisolePresuntoQueijo">Risole Presunto e Queijo</label>
   <select id="salgadoRisolePresuntoQueijo">
-    <option value="0">Selecione...</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-  </select>
-</div>
-    <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
-  <label for="salgadoCoxinhaCostela">Coxinha de Costela</label>
-  <select id="salgadoCoxinhaCostela">
     <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -1227,22 +1209,6 @@ function mostrarEndereco() {
   </select>
 </div>
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
-  <label for="pastelPernil">Pernil</label>
-  <select id="pastelPernil">
-    <option value="0">Selecione...</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-  </select>
-</div>
-    <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="pastelChocolateNinho">Chocolate com Ninho</label>
   <select id="pastelChocolateNinho">
     <option value="0">Selecione...</option>
@@ -1519,7 +1485,7 @@ function mostrarEndereco() {
   </select>
 </div>
 
-   <h2>Forma de Pagamento</h2>
+<h2>Forma de Pagamento</h2>
 <div class="item">
     <label for="pagamento">Escolha a forma de pagamento:</label>
     <select id="pagamento">
@@ -1528,7 +1494,6 @@ function mostrarEndereco() {
         <option value="pix">Pix</option>
         <option value="uairango">UaiRango</option>
     </select>
-</div>
 
 <h2>Taxa</h2>
 <div class="item">
@@ -1539,11 +1504,10 @@ function mostrarEndereco() {
         <option value="delivery">Delivery (R$ 4,00)</option>
     </select>
 </div>
-    
-    <div id="enderecoContainer" class="item">
+
+<div id="enderecoContainer" class="item">
     <label for="endereco">Endereço:</label>
     <input type="text" id="endereco">
-</div>
 </div>
     
 <label for="valor-pago">Valor Pago:</label>
@@ -1551,8 +1515,8 @@ function mostrarEndereco() {
 
     <div class="button-container">
     <button class="button" onclick="adicionarPedido()">Adicionar Pedido</button>
-    </div>
- 
+    <button class="button reset-button" onclick="resetSelect()">Limpar Pedido</button>  
+</div>
 
 <div class="button-container">
     <button class="button button-calcular" onclick="calcularTotal()">Calcular Total</button>
@@ -1598,50 +1562,48 @@ function mostrarEndereco() {
 
         function calcularTotal() {
           const precos = {
-    salgadoCoxinha: 7.00,
-    salgadoRisoleCarne: 7.00,
-    salgadoRisolePresuntoQueijo: 7.00,
-    salgadoCoxinhaCostela: 9.00,
-    salgadoCoxinhaPernil: 9.00,
-    salgadoBolinhaQueijo: 9.00,  
-    pastelCarne: 8.00,
-    pastelQueijoPresunto: 8.00,
-    pastelPizza: 8.00,
-    pastelFrango: 8.00,
-    pastelFrangoCatupiry: 8.00,
-    pastelQueijo: 10.00,
-    pastelCarneQueijo: 12.00,
-    pastelFrangoQueijo: 12.00,
-    pastelCalabresa: 10.00,  
-    pastelCalabresaQueijo: 14.00,
-    pastelQueijoBacon: 13.00,
-    pastelCarneSeca: 16.00,  
-    pastelCarneSecaQueijo: 20.00,  
-    pastelCostela: 16.00,
-    pastelCostelaAcebolada: 18.00,
-    pastelCostelacomQueijo: 20.00,
-    pastelDuplo: 18.00,
-    pastelHamburguer: 12.00,
-    pastelHotDog: 12.00,
-    pastelPernil: 12.00,
-    pastelChocolateNinho: 12.00,
-    pastelDoceLeiteBanana: 12.00,
-    adicionalBombom: 3.00,
-    adicionalCocoRalado: 3.00,
-    adicionalQueijo: 4.00,
-    adicionalCatupiry: 3.00,
-    adicionalCalabresa: 3.00,
-    adicionalBacon: 3.00,
-    adicionalMilho: 3.00,
-    adicionalVinagrete: 3.00,
-    bebidaGuarana: 8.00,
-    bebidaCocaCola: 14.00,
-    bebidaCoca: 7.00,
-    bebidaLatinha: 5.00,
-    bebidaCerveja: 5.00,
-    bebidaSuco: 4.00,
-    bebidaaguagas: 5.00
-};
+            salgadoCoxinha: 7.00,
+            salgadoRisoleCarne: 7.00,
+            salgadoRisolePresuntoQueijo: 7.00,
+            salgadoCoxinhaPernil: 7.00,  
+            salgadoBolinhaQueijo: 9.00,  
+            pastelCarne: 8.00,
+            pastelQueijoPresunto: 8.00,
+            pastelPizza: 8.00,
+            pastelFrango: 8.00,
+            pastelFrangoCatupiry: 8.00,
+            pastelQueijo: 10.00,
+            pastelCarneQueijo: 12.00,
+            pastelFrangoQueijo: 12.00,
+            pastelCalabresa: 10.00,  
+            pastelCalabresaQueijo: 14.00,
+            pastelQueijoBacon: 13.00,
+            pastelCarneSeca: 16.00,  
+            pastelCarneSecaQueijo: 20.00,  
+            pastelCostela: 16.00,
+            pastelCostelaAcebolada: 18.00,
+            pastelCostelacomQueijo: 20.00,
+            pastelDuplo: 18.00,
+            pastelHamburguer: 12.00,
+            pastelHotDog: 12.00,  
+            pastelChocolateNinho: 12.00,
+            pastelDoceLeiteBanana: 12.00,
+            adicionalBombom: 3.00,
+            adicionalCocoRalado: 3.00,
+            adicionalQueijo: 4.00,
+            adicionalCatupiry: 3.00,
+            adicionalCalabresa: 3.00,
+            adicionalBacon: 3.00,
+            adicionalMilho: 3.00,
+            adicionalVinagrete: 3.00,
+            bebidaGuarana: 8.00,
+            bebidaCocaCola: 14.00,
+            bebidaCoca: 7.00,
+            bebidaLatinha: 5.00,
+            bebidaCerveja: 5.00,
+            bebidaSuco: 4.00,
+            bebidaaguagas: 5.00  
+          };
 
           let total = 0;
 
@@ -1699,8 +1661,7 @@ function mostrarEndereco() {
               coxinha: document.getElementById('salgadoCoxinha').value,
               risoleCarne: document.getElementById('salgadoRisoleCarne').value,
               risolePresuntoQueijo: document.getElementById('salgadoRisolePresuntoQueijo').value,
-              coxinhapernil: document.getElementById('salgadoCoxinhaPernil').value,                
-              coxinhacostela: document.getElementById('salgadoCoxinhaCostela').value,
+              coxinhapernil: document.getElementById('salgadoCoxinhaPernil').value,
               bolinhaqueijo: document.getElementById('salgadoBolinhaQueijo').value,  
               carne: document.getElementById('pastelCarne').value,
               queijoPresunto: document.getElementById('pastelQueijoPresunto').value,
@@ -1721,7 +1682,6 @@ function mostrarEndereco() {
               pastelDuplo: document.getElementById('pastelDuplo').value,
               hamburguer: document.getElementById('pastelHamburguer').value,
               hotDog: document.getElementById('pastelHotDog').value,
-              pernil: document.getElementById('pastelPernil').value,  
               chocolateNinho: document.getElementById('pastelChocolateNinho').value,
               doceLeiteBanana: document.getElementById('pastelDoceLeiteBanana').value
             };
