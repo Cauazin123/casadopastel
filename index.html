@@ -688,10 +688,11 @@ const precos = {
     salgadoCoxinha: 7.00,
     salgadoRisoleCarne: 7.00,
     salgadoRisolePresuntoQueijo: 7.00,
-    salgadoCoxinhaPernil: 7.00,
+    salgadoCoxinhaPernil: 9.00,
     salgadoCoxinhaCostela: 9.00,
     salgadoSalsicha: 7.00,
-    salgadoBolinhaQueijo: 9.00,  
+    salgadoBolinhaQueijo: 9.00,
+    salgadoCarneSeca: 9.00,
     pastelCarne: 8.00,
     pastelQueijoPresunto: 8.00,
     pastelPizza: 8.00,
@@ -923,6 +924,22 @@ function mostrarEndereco() {
     <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
   <label for="salgadoSalsicha">Salsicha</label>
   <select id="salgadoSalsicha">
+    <option value="0">Selecione...</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+</div>
+    <div class="item" bis_skin_checked="1" style="display: inline-block; width: 200px; margin-right: 10px; margin-bottom: 10px;">
+  <label for="salgadoCarneSeca">Carne Seca</label>
+  <select id="salgadoCarneSeca">
     <option value="0">Selecione...</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -1621,9 +1638,10 @@ function mostrarEndereco() {
     salgadoRisoleCarne: 7.00,
     salgadoRisolePresuntoQueijo: 7.00,
     salgadoCoxinhaCostela: 9.00,          
-    salgadoCoxinhaPernil: 7.00,
+    salgadoCoxinhaPernil: 9.00,
     salgadoSalsicha: 7.00,
     salgadoBolinhaQueijo: 9.00,  
+    salgadoCarneSeca: 9.00,          
     pastelCarne: 8.00,
     pastelQueijoPresunto: 8.00,
     pastelPizza: 8.00,
@@ -1721,7 +1739,8 @@ function mostrarEndereco() {
               risolePresuntoQueijo: document.getElementById('salgadoRisolePresuntoQueijo').value,
               coxinhapernil: document.getElementById('salgadoCoxinhaPernil').value,
               coxinhacostela: document.getElementById('salgadoCoxinhaCostela').value,
-              salsicha: document.getElementById('salgadoSalsicha').value,  
+              salsicha: document.getElementById('salgadoSalsicha').value,
+              salgadocarneseca: document.getElementById('salgadoCarneSeca').value,  
               bolinhaqueijo: document.getElementById('salgadoBolinhaQueijo').value,  
               carne: document.getElementById('pastelCarne').value,
               queijoPresunto: document.getElementById('pastelQueijoPresunto').value,
